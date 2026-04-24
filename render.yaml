@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: relaychat-realtime
+    runtime: docker
+    rootDir: services/realtime
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        value: https://zawqqhxuipsatxbkthxp.supabase.co
+      - key: NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+        value: sb_publishable_uxER4v6iRuXhzlKosS-iOA_1_QAVm3-
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: APP_ORIGIN
+        value: https://relaychat-two.vercel.app
+      - key: PHX_HOST
+        value: relaychat-realtime.onrender.com
+
+  - type: web
+    name: relaychat-analytics
+    runtime: python
+    rootDir: services/analytics-python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        value: https://zawqqhxuipsatxbkthxp.supabase.co
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ANALYTICS_API_KEY
+        generateValue: true
+      - key: ANALYTICS_ALLOWED_ORIGINS
+        value: https://relaychat-two.vercel.app
+      - key: ANALYTICS_IP_SALT
+        generateValue: true
