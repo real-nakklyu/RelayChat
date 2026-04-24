@@ -1,0 +1,9 @@
+-- Seed users are created through Supabase Auth in local development.
+-- After creating two users in the dashboard or with the auth admin API,
+-- update their generated profile usernames here if desired:
+--
+-- update public.profiles set username = 'alice', display_name = 'Alice Lane'
+-- where id = '<alice-auth-user-id>';
+--
+-- update public.profiles set username = 'ben', display_name = 'Ben Cross'
+-- where id = '<ben-auth-user-id>';

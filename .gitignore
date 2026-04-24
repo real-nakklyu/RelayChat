@@ -1,0 +1,17 @@
+node_modules
+.next
+.turbo
+.vercel
+.supabase
+.env
+.env.local
+.env.*.local
+coverage
+dist
+__pycache__
+.pytest_cache
+.venv
+*.beam
+_build
+deps
+erl_crash.dump

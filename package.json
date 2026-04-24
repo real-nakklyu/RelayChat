@@ -1,0 +1,17 @@
+{
+  "name": "relaychat",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "packages/shared-types"
+  ],
+  "scripts": {
+    "dev:web": "npm --prefix apps/web run dev",
+    "build:web": "npm --prefix apps/web run build",
+    "lint:web": "npm --prefix apps/web run lint",
+    "test:web": "npm --prefix apps/web run test",
+    "test:analytics": "python -m pytest services/analytics-python/tests",
+    "test:db": "supabase test db"
+  }
+}
